@@ -1,0 +1,14 @@
+apscheduler
+async-signals
+click
+python-box
+python-socketio
+quart
+quart-cors
+uvicorn[standard]
+pyllamacpp
+langchain
+huggingface_hub
+llama-cpp-python
+edge-tts
+pygame

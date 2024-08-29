@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: logspyq
+Version: 0.1.0
+Summary: Python-for-Logseq Plugins
+Home-page: https://github.com/hiway/logspyq
+Author: Harshad Sharma
+Author-email: harshad@sharma.io
+License: MIT
+License-File: LICENSE
+Requires-Dist: apscheduler
+Requires-Dist: async-signals
+Requires-Dist: click
+Requires-Dist: python-box
+Requires-Dist: python-socketio
+Requires-Dist: quart
+Requires-Dist: quart-cors
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pyllamacpp
+Requires-Dist: langchain
+Requires-Dist: huggingface_hub
+Requires-Dist: llama-cpp-python
+Requires-Dist: edge-tts
+Requires-Dist: pygame

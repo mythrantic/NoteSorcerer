@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/logspyq.egg-info/PKG-INFO
+src/logspyq.egg-info/SOURCES.txt
+src/logspyq.egg-info/dependency_links.txt
+src/logspyq.egg-info/entry_points.txt
+src/logspyq.egg-info/not-zip-safe
+src/logspyq.egg-info/requires.txt
+src/logspyq.egg-info/top_level.txt
+tests/test_api_proxy.py
+tests/test_server_plug.py

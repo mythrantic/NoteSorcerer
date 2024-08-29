@@ -1,0 +1,2 @@
+[console_scripts]
+logspyq = logspyq.server.cli:main

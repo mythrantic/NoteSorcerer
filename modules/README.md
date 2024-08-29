@@ -1,0 +1,1 @@
+This modules some should be run but some can be found on pypi. These are the critical modules i use that i might want to modify later on

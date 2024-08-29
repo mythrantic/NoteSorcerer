@@ -1,0 +1,19 @@
+cd examples 
+python  hello.py
+
+cd plugin
+yarn
+yarn build
+
+index.js 
+-
+const socket = io.connect(logseq.settings!["serverURL"] -->
+const socket = io.connect("http://localhost:8484"
+
+#comment out 
+App.onMacroRendererSlotted
+
+# remove in src/logspyq/server/server.py line 95
+debug
+
+-

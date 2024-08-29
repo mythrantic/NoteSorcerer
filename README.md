@@ -59,7 +59,13 @@ edge-tts --list-voices #https://pypi.org/project/edge-tts/
 python -m venv venv
 .\venv\Scripts\activate
 
-# go to all the modules root and run this
+pip install -e ./modules/logspyq
+pip install -e ./modules/RealtimeSTT
+# or for RealtimeSTT
+pip install RealtimeSTT
+
+
+# alternatively, go to all the modules root and run this
 pip install -e . 
 
 # back on the root of the project

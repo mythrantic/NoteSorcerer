@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+RealtimeSTT/__init__.py
+RealtimeSTT/audio_recorder.py
+RealtimeSTT.egg-info/PKG-INFO
+RealtimeSTT.egg-info/SOURCES.txt
+RealtimeSTT.egg-info/dependency_links.txt
+RealtimeSTT.egg-info/requires.txt
+RealtimeSTT.egg-info/top_level.txt

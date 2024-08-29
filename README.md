@@ -58,8 +58,14 @@ edge-tts --list-voices #https://pypi.org/project/edge-tts/
 #pip install virtualenv
 python -m venv venv
 .\venv\Scripts\activate
+
+# go to all the modules root and run this
 pip install -e . 
+
+# back on the root of the project
 python my_plugin.py
+
+# or
 cd examples 
 python hello.py
 

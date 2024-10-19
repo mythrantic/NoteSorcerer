@@ -1,8 +1,8 @@
 # NoteSorcerer
 choice of name, not finally decided between:
-[x] NoteSorcerer
-[] NoteAlchemy
-[] logplug
+- [x] NoteSorcerer
+- [ ] NoteAlchemy
+- [ ] logplug
 
 Write Logseq Plugins in Python 3
 

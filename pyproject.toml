@@ -4,4 +4,8 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "keyboard>=0.13.5",
+    "realtimestt>=0.3.98",
+    "realtimetts>=0.4.50",
+]

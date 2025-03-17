@@ -1,11 +1,17 @@
-
 # RealtimeSTT
+[![PyPI](https://img.shields.io/pypi/v/RealtimeSTT)](https://pypi.org/project/RealtimeSTT/)
+[![Downloads](https://static.pepy.tech/badge/RealtimeSTT)](https://www.pepy.tech/projects/realtimestt)
+[![GitHub release](https://img.shields.io/github/release/KoljaB/RealtimeSTT.svg)](https://GitHub.com/KoljaB/RealtimeSTT/releases/)
+[![GitHub commits](https://badgen.net/github/commits/KoljaB/RealtimeSTT)](https://GitHub.com/Naereen/KoljaB/RealtimeSTT/commit/)
+[![GitHub forks](https://img.shields.io/github/forks/KoljaB/RealtimeSTT.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/KoljaB/RealtimeSTT/network/)
+[![GitHub stars](https://img.shields.io/github/stars/KoljaB/RealtimeSTT.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/KoljaB/RealtimeSTT/stargazers/)
 
 *Easy-to-use, low-latency speech-to-text library for realtime applications*
 
 ## New
 
-Custom wake words with [OpenWakeWord](#openwakeword). Thanks to the [developers](https://github.com/dscripka/openWakeWord) of this!
+- AudioToTextRecorderClient class, which automatically starts a server if none is running and connects to it. The class shares the same interface as AudioToTextRecorder, making it easy to upgrade or switch between the two. (Work in progress, most parameters and callbacks of AudioToTextRecorder are already implemented into AudioToTextRecorderClient, but not all. Also the server can not handle concurrent (parallel) requests yet.)
+- reworked CLI interface ("stt-server" to start the server, "stt" to start the client, look at "server" folder for more info)
 
 ## About the Project
 
@@ -18,15 +24,53 @@ It's ideal for:
 - **Voice Assistants**
 - Applications requiring **fast and precise** speech-to-text conversion
 
-https://github.com/KoljaB/RealtimeSTT/assets/7604638/207cb9a2-4482-48e7-9d2b-0722c3ee6d14
+https://github.com/user-attachments/assets/797e6552-27cd-41b1-a7f3-e5cbc72094f5  
+
+[CLI demo code (reproduces the video above)](tests/realtimestt_test.py)
 
 ### Updates
 
-Latest Version: v0.2.41
+Latest Version: v0.3.98
 
 See [release history](https://github.com/KoljaB/RealtimeSTT/releases).
 
 > **Hint:** *Since we use the `multiprocessing` module now, ensure to include the `if __name__ == '__main__':` protection in your code to prevent unexpected behavior, especially on platforms like Windows. For a detailed explanation on why this is important, visit the [official Python documentation on `multiprocessing`](https://docs.python.org/3/library/multiprocessing.html#multiprocessing-programming).*
+
+## Quick Examples
+
+### Print everything being said:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+def process_text(text):
+    print(text)
+
+if __name__ == '__main__':
+    print("Wait until it says 'speak now'")
+    recorder = AudioToTextRecorder()
+
+    while True:
+        recorder.text(process_text)
+```
+
+### Type everything being said:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+import pyautogui
+
+def process_text(text):
+    pyautogui.typewrite(text + " ")
+
+if __name__ == '__main__':
+    print("Wait until it says 'speak now'")
+    recorder = AudioToTextRecorder()
+
+    while True:
+        recorder.text(process_text)
+```
+*Will type everything being said into your selected text box*
 
 ### Features
 
@@ -59,10 +103,27 @@ pip install RealtimeSTT
 
 This will install all the necessary dependencies, including a **CPU support only** version of PyTorch.
 
-Although it is possible to run RealtimeSTT with a CPU installation only (use a small model like "tiny" or "base" in this case) you will get way better experience using:
+Although it is possible to run RealtimeSTT with a CPU installation only (use a small model like "tiny" or "base" in this case) you will get way better experience using CUDA (please scroll down).
+
+### Linux Installation
+
+Before installing RealtimeSTT please execute:
+
+```bash
+sudo apt-get update
+sudo apt-get install python3-dev
+sudo apt-get install portaudio19-dev
+```
+
+### MacOS Installation
+
+Before installing RealtimeSTT please execute:
+
+```bash
+brew install portaudio
+```
 
 ### GPU Support with CUDA (recommended)
-
 
 ### Updating PyTorch for CUDA Support
 
@@ -72,17 +133,17 @@ To upgrade your PyTorch installation to enable GPU support with CUDA, follow the
 To update PyTorch and Torchaudio to support CUDA 11.8, use the following commands:
 
 ```bash
-pip install torch==2.3.1+cu118 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.5.1+cu118 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
 ```
 
 #### For CUDA 12.X:
 To update PyTorch and Torchaudio to support CUDA 12.X, execute the following:
 
 ```bash
-pip install torch==2.3.1+cu121 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu121
+pip install torch==2.5.1+cu121 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
 ```
 
-Replace `2.3.1` with the version of PyTorch that matches your system and requirements.
+Replace `2.5.1` with the version of PyTorch that matches your system and requirements.
 
 ### Steps That Might Be Necessary Before
 
@@ -158,6 +219,19 @@ recorder.stop()
 print(recorder.text())
 ```
 
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder()
+    recorder.start()
+    input("Press Enter to stop recording...")
+    recorder.stop()
+    print("Transcription: ", recorder.text())
+```
+
 ### Automatic Recording
 
 Recording based on voice activity detection.
@@ -167,7 +241,18 @@ with AudioToTextRecorder() as recorder:
     print(recorder.text())
 ```
 
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+if __name__ == '__main__':
+    with AudioToTextRecorder() as recorder:
+        print("Transcription: ", recorder.text())
+```
+
 When running recorder.text in a loop it is recommended to use a callback, allowing the transcription to be run asynchronously:
+
 
 ```python
 def process_text(text):
@@ -175,6 +260,21 @@ def process_text(text):
     
 while True:
     recorder.text(process_text)
+```
+
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+def process_text(text):
+    print(text)
+
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder()
+
+    while True:
+        recorder.text(process_text)
 ```
 
 ### Wakewords
@@ -186,6 +286,18 @@ recorder = AudioToTextRecorder(wake_words="jarvis")
 
 print('Say "Jarvis" then speak.')
 print(recorder.text())
+```
+
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder(wake_words="jarvis")
+
+    print('Say "Jarvis" to start recording.')
+    print(recorder.text())
 ```
 
 ### Callbacks
@@ -203,12 +315,42 @@ recorder = AudioToTextRecorder(on_recording_start=my_start_callback,
                                on_recording_stop=my_stop_callback)
 ```
 
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+def start_callback():
+    print("Recording started!")
+
+def stop_callback():
+    print("Recording stopped!")
+
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder(on_recording_start=start_callback,
+                                   on_recording_stop=stop_callback)
+```
+
 ### Feed chunks
 
 If you don't want to use the local microphone set use_microphone parameter to false and provide raw PCM audiochunks in 16-bit mono (samplerate 16000) with this method:
 
 ```python
 recorder.feed_audio(audio_chunk)
+```
+
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder(use_microphone=False)
+    with open("audio_chunk.pcm", "rb") as f:
+        audio_chunk = f.read()
+
+    recorder.feed_audio(audio_chunk)
+    print("Transcription: ", recorder.text())
 ```
 
 ### Shutdown
@@ -220,10 +362,23 @@ with AudioToTextRecorder() as recorder:
     [...]
 ```
 
+
 Or you can call the shutdown method manually (if using "with" is not feasible):
 
 ```python
 recorder.shutdown()
+```
+
+#### Standalone Example:
+
+```python
+from RealtimeSTT import AudioToTextRecorder
+
+if __name__ == '__main__':
+    with AudioToTextRecorder() as recorder:
+        [...]
+    # or manually shutdown if "with" is not used
+    recorder.shutdown()
 ```
 
 ## Testing the Library
@@ -298,6 +453,10 @@ When you initialize the `AudioToTextRecorder` class, you have various options to
 
 - **level** (int, default=logging.WARNING): Logging level.
 
+- **batch_size** (int, default=16): Batch size for the main transcription. Set to 0 to deactivate.
+
+- **init_logging** (bool, default=True): Whether to initialize the logging framework. Set to False to manage this yourself.
+
 - **handle_buffer_overflow** (bool, default=True): If set, the system will log a warning when an input overflow occurs during recording and remove the data from the buffer.
 
 - **beam_size** (int, default=5): The beam size to use for beam search decoding.
@@ -309,6 +468,14 @@ When you initialize the `AudioToTextRecorder` class, you have various options to
 - **on_recorded_chunk**: A callback function that is triggered when a chunk of audio is recorded. Submits the chunk data as parameter.
 
 - **debug_mode** (bool, default=False): If set, the system prints additional debug information to the console.
+
+- **print_transcription_time** (bool, default=False): Logs the processing time of the main model transcription. This can be useful for performance monitoring and debugging.
+
+- **early_transcription_on_silence** (int, default=0): If set, the system will transcribe audio faster when silence is detected. Transcription will start after the specified milliseconds. Keep this value lower than `post_speech_silence_duration`, ideally around `post_speech_silence_duration` minus the estimated transcription time with the main model. If silence lasts longer than `post_speech_silence_duration`, the recording is stopped, and the transcription is submitted. If voice activity resumes within this period, the transcription is discarded. This results in faster final transcriptions at the cost of additional GPU load due to some unnecessary final transcriptions.
+
+- **allowed_latency_limit** (int, default=100): Specifies the maximum number of unprocessed chunks in the queue before discarding chunks. This helps prevent the system from being overwhelmed and losing responsiveness in real-time applications.
+
+- **no_log_file** (bool, default=False): If set, the system will skip writing the debug log file, reducing disk I/O. Useful if logging to a file is not needed and performance is a priority.
 
 #### Real-time Transcription Parameters
 
@@ -326,6 +493,8 @@ When you initialize the `AudioToTextRecorder` class, you have various options to
 - **on_realtime_transcription_update**: A callback function that is triggered whenever there's an update in the real-time transcription. The function is called with the newly transcribed text as its argument.
 
 - **on_realtime_transcription_stabilized**: A callback function that is triggered whenever there's an update in the real-time transcription and returns a higher quality, stabilized text as its argument.
+
+- **realtime_batch_size**: (int, default=16): Batch size for the real-time transcription model. Set to 0 to deactivate.
 
 - **beam_size_realtime** (int, default=3): The beam size to use for real-time transcription beam search decoding.
 
@@ -404,6 +573,17 @@ Suggested starting parameters for OpenWakeWord usage:
         ) as recorder:
 ```
 
+## FAQ
+
+### Q: I encountered the following error: "Unable to load any of {libcudnn_ops.so.9.1.0, libcudnn_ops.so.9.1, libcudnn_ops.so.9, libcudnn_ops.so} Invalid handle. Cannot load symbol cudnnCreateTensorDescriptor." How do I fix this?
+
+**A:** This issue arises from a mismatch between the version of `ctranslate2` and cuDNN. The `ctranslate2` library was updated to version 4.5.0, which uses cuDNN 9.2. There are two ways to resolve this issue:
+1. **Downgrade `ctranslate2` to version 4.4.0**:
+   ```bash
+   pip install ctranslate2==4.4.0
+   ```
+2. **Upgrade cuDNN** on your system to version 9.2 or above.
+
 ## Contribution
 
 Contributions are always welcome! 
@@ -412,7 +592,7 @@ Shoutout to [Steven Linn](https://github.com/stevenlafl) for providing docker su
 
 ## License
 
-MIT
+[MIT](https://github.com/KoljaB/RealtimeSTT?tab=MIT-1-ov-file)
 
 ## Author
 

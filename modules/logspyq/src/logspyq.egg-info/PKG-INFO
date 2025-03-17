@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.2
 Name: logspyq
 Version: 0.1.0
 Summary: Python-for-Logseq Plugins
@@ -21,3 +21,9 @@ Requires-Dist: huggingface_hub
 Requires-Dist: llama-cpp-python
 Requires-Dist: edge-tts
 Requires-Dist: pygame
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary

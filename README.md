@@ -59,6 +59,11 @@ edge-tts --list-voices #https://pypi.org/project/edge-tts/
 python -m venv venv
 .\venv\Scripts\activate
 
+#in linux, for others checkout https://github.com/KoljaB/RealtimeSTT#installation
+sudo apt-get update
+sudo apt-get install python3-dev
+sudo apt-get install portaudio19-dev
+
 pip install -e ./modules/logspyq
 pip install -e ./modules/RealtimeSTT
 # or for RealtimeSTT

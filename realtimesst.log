@@ -1,0 +1,69 @@
+2025-03-17 21:20:17.327 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-03-17 21:20:17.341 - RealTimeSTT: root - INFO - Initializing faster_whisper main transcription model tiny
+2025-03-17 21:20:17.341 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-03-17 21:20:17.341 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-03-17 21:20:17.341 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-03-17 21:20:17.670 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:20:17.774 - RealTimeSTT: root - INFO - Microphone connected and validated (input_device_index: 14)
+2025-03-17 21:20:17.774 - RealTimeSTT: root - DEBUG - Audio recording initialized successfully at 16000 Hz, reading 1024 frames at a time
+2025-03-17 21:20:18.008 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-03-17 21:20:18.017 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:20:18.018 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:20:18.019 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:20:18.020 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:20:18.163 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/vocabulary.txt HTTP/1.1" 200 0
+2025-03-17 21:20:18.165 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/tokenizer.json HTTP/1.1" 200 0
+2025-03-17 21:20:18.167 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/config.json HTTP/1.1" 200 0
+2025-03-17 21:20:18.170 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/model.bin HTTP/1.1" 302 0
+2025-03-17 21:20:18.174 - RealTimeSTT: filelock - DEBUG - Attempting to acquire lock 127289430081072 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/3baa18e2b321a2f489614607852a729fcd516480.lock
+2025-03-17 21:20:18.174 - RealTimeSTT: filelock - DEBUG - Attempting to acquire lock 127289430079824 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/7818adb6de9fa3064d3ff81226fdd675be1f6344.lock
+2025-03-17 21:20:18.175 - RealTimeSTT: filelock - DEBUG - Attempting to acquire lock 127289430074832 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1.lock
+2025-03-17 21:20:18.176 - RealTimeSTT: filelock - DEBUG - Lock 127289430081072 acquired on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/3baa18e2b321a2f489614607852a729fcd516480.lock
+2025-03-17 21:20:18.176 - RealTimeSTT: filelock - DEBUG - Lock 127289430079824 acquired on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/7818adb6de9fa3064d3ff81226fdd675be1f6344.lock
+2025-03-17 21:20:18.177 - RealTimeSTT: filelock - DEBUG - Attempting to acquire lock 127289430078192 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/c9074644d9d1205686f16d411564729461324b75.lock
+2025-03-17 21:20:18.180 - RealTimeSTT: filelock - DEBUG - Lock 127289430074832 acquired on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1.lock
+2025-03-17 21:20:18.181 - RealTimeSTT: filelock - DEBUG - Lock 127289430078192 acquired on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/c9074644d9d1205686f16d411564729461324b75.lock
+2025-03-17 21:20:18.182 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): cdn-lfs-us-1.hf.co:443
+2025-03-17 21:20:18.299 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/config.json HTTP/1.1" 200 2249
+2025-03-17 21:20:18.301 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://cdn-lfs-us-1.hf.co:443 "GET /repos/c3/94/c394d9c1034405d7a5fe191992713275237434c7e3bffc5d1345b8134541707f/dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model.bin%3B+filename%3D%22model.bin%22%3B&response-content-type=application%2Foctet-stream&Expires=1742246418&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0MjI0NjQxOH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2MzLzk0L2MzOTRkOWMxMDM0NDA1ZDdhNWZlMTkxOTkyNzEzMjc1MjM3NDM0YzdlM2JmZmM1ZDEzNDViODEzNDU0MTcwN2YvZGNiNzZjNjU4NmZjMDZjYmRhYzZkZDIxZjE0Y2ZkMTI5Y2M0Y2RkOWRjZTE5YmY0ZmZhNjJlNTljYmU2ZTZkMT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=NNoaXstb32SDcArqJ0BMySuGtS59n6UfFfVkxOlze6F-PVVQa4t6mLbnWjw98LC~RXGyEXXDcFnencBICZAgI1BImPnS17WkutIZ8m2pyEy2fZQDBtO4CTY9RSwnouBU~XYuPLMkMbC7NQ4qm7BhrRtLfdxZYQVwxbMW9N1LfN~CShtbMhTy99VL9ZxSvZ~cc7XPeS5sLFb~GxilN7nVUrqI1arxIrGqLF0g7x46VxSsBCz96Bs0FuEhDyxpA1HXQXZKWx8LQ-mHFgmWPoxfGCyQnJxzv~~O4wmZNL3fwSytQc5YpX37qOV8XvJeMrkLiA7~uJqhevWDruSW0echTw__&Key-Pair-Id=K24J24Z295AEI9 HTTP/1.1" 200 75538270
+2025-03-17 21:20:18.303 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/vocabulary.txt HTTP/1.1" 200 459861
+2025-03-17 21:20:18.304 - RealTimeSTT: filelock - DEBUG - Attempting to release lock 127289430081072 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/3baa18e2b321a2f489614607852a729fcd516480.lock
+2025-03-17 21:20:18.304 - RealTimeSTT: filelock - DEBUG - Lock 127289430081072 released on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/3baa18e2b321a2f489614607852a729fcd516480.lock
+2025-03-17 21:20:18.305 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /Systran/faster-whisper-tiny/resolve/d90ca5fe260221311c53c58e660288d3deb8d356/tokenizer.json HTTP/1.1" 200 2203239
+2025-03-17 21:20:18.616 - RealTimeSTT: filelock - DEBUG - Attempting to release lock 127289430078192 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/c9074644d9d1205686f16d411564729461324b75.lock
+2025-03-17 21:20:18.616 - RealTimeSTT: filelock - DEBUG - Lock 127289430078192 released on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/c9074644d9d1205686f16d411564729461324b75.lock
+2025-03-17 21:20:18.845 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:19.129 - RealTimeSTT: filelock - DEBUG - Attempting to release lock 127289430079824 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/7818adb6de9fa3064d3ff81226fdd675be1f6344.lock
+2025-03-17 21:20:19.129 - RealTimeSTT: filelock - DEBUG - Lock 127289430079824 released on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/7818adb6de9fa3064d3ff81226fdd675be1f6344.lock
+2025-03-17 21:20:19.869 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:20.894 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:21.919 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:22.944 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:23.968 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:24.992 - RealTimeSTT: root - DEBUG - _audio_data_worker writing audio data into queue.
+2025-03-17 21:20:25.534 - RealTimeSTT: filelock - DEBUG - Attempting to release lock 127289430074832 on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1.lock
+2025-03-17 21:20:25.534 - RealTimeSTT: filelock - DEBUG - Lock 127289430074832 released on /home/valiantlynx/.cache/huggingface/hub/.locks/models--Systran--faster-whisper-tiny/dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1.lock
+2025-03-17 21:20:25.706 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.620
+2025-03-17 21:20:25.719 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-03-17 21:25:36.444 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-03-17 21:25:36.469 - RealTimeSTT: root - INFO - Initializing faster_whisper main transcription model tiny
+2025-03-17 21:25:36.469 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-03-17 21:25:36.469 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-03-17 21:25:36.469 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-03-17 21:25:36.694 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:25:36.860 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-03-17 21:25:36.866 - RealTimeSTT: root - INFO - Microphone connected and validated (input_device_index: 14)
+2025-03-17 21:25:36.867 - RealTimeSTT: root - DEBUG - Audio recording initialized successfully at 16000 Hz, reading 1024 frames at a time
+2025-03-17 21:25:37.058 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.620
+2025-03-17 21:25:37.088 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-03-17 21:26:11.521 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-03-17 21:26:11.537 - RealTimeSTT: root - INFO - Initializing faster_whisper main transcription model tiny
+2025-03-17 21:26:11.537 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-03-17 21:26:11.537 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-03-17 21:26:11.537 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-03-17 21:26:11.762 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-03-17 21:26:11.909 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-03-17 21:26:11.932 - RealTimeSTT: root - INFO - Microphone connected and validated (input_device_index: 14)
+2025-03-17 21:26:11.933 - RealTimeSTT: root - DEBUG - Audio recording initialized successfully at 16000 Hz, reading 1024 frames at a time
+2025-03-17 21:26:12.108 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.620
+2025-03-17 21:26:12.116 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio

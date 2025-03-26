@@ -346,6 +346,20 @@ wheels = [
 ]
 
 [[package]]
+name = "fastapi"
+version = "0.115.12"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "starlette" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f4/55/ae499352d82338331ca1e28c7f4a63bfd09479b16395dce38cf50a39e2c2/fastapi-0.115.12.tar.gz", hash = "sha256:1e2c2a2646905f9e83d32f04a3f86aff4a286669c6c950ca95b5fd68c2602681", size = 295236 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/50/b3/b51f09c2ba432a576fe63758bddc81f78f0c6309d9e5c10d194313bf021e/fastapi-0.115.12-py3-none-any.whl", hash = "sha256:e94613d6c05e27be7ffebdd6ea5f388112e5e430c8f7d6494a9d1d88d43e814d", size = 95164 },
+]
+
+[[package]]
 name = "faster-whisper"
 version = "1.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -975,6 +989,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "edge-tts" },
+    { name = "fastapi" },
     { name = "keyboard" },
     { name = "logspyq" },
     { name = "pygame" },
@@ -985,11 +1000,12 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "edge-tts", specifier = ">=7.0.0" },
+    { name = "fastapi", specifier = ">=0.115.12" },
     { name = "keyboard", specifier = ">=0.13.5" },
     { name = "logspyq", virtual = "modules/logspyq" },
     { name = "pygame", specifier = ">=2.6.1" },
-    { name = "realtimestt", specifier = ">=0.3.98" },
-    { name = "realtimetts", specifier = ">=0.4.50" },
+    { name = "realtimestt", directory = "modules/RealtimeSTT" },
+    { name = "realtimetts", directory = "modules/RealtimeTTS" },
 ]
 
 [[package]]
@@ -4055,7 +4071,7 @@ wheels = [
 [[package]]
 name = "realtimestt"
 version = "0.3.98"
-source = { registry = "https://pypi.org/simple" }
+source = { directory = "modules/RealtimeSTT" }
 dependencies = [
     { name = "faster-whisper" },
     { name = "halo" },
@@ -4071,24 +4087,122 @@ dependencies = [
     { name = "websocket-client" },
     { name = "websockets" },
 ]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/a2/b4/e151ddccf02bc548234e76f7bc52ac0f602fd5ef722fc0e4fa69092cb47e/realtimestt-0.3.98-py3-none-any.whl", hash = "sha256:8d6fafa3cf181ae15f4b8ca7377d4668a98718b952bc6263020e870eda20b6a0", size = 104289 },
+
+[package.metadata]
+requires-dist = [
+    { name = "faster-whisper", specifier = "==1.1.1" },
+    { name = "halo", specifier = "==0.0.31" },
+    { name = "numpy", specifier = "<2.0.0" },
+    { name = "openwakeword", specifier = ">=0.4.0" },
+    { name = "pvporcupine", specifier = "==1.9.5" },
+    { name = "pyaudio", specifier = "==0.2.14" },
+    { name = "scipy", specifier = "==1.15.1" },
+    { name = "soundfile", specifier = "==0.13.1" },
+    { name = "torch" },
+    { name = "torchaudio" },
+    { name = "webrtcvad-wheels", specifier = "==2.0.14" },
+    { name = "websocket-client", specifier = "==1.8.0" },
+    { name = "websockets", specifier = "==14.2" },
 ]
 
 [[package]]
 name = "realtimetts"
 version = "0.4.50"
-source = { registry = "https://pypi.org/simple" }
+source = { directory = "modules/RealtimeTTS" }
 dependencies = [
     { name = "pyaudio" },
     { name = "pydub" },
     { name = "resampy" },
     { name = "stream2sentence" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/19/cf/d28323f9fc03e6d3ca9a266c2c957b71e15de7cfcfff2f4eaf1790168eed/realtimetts-0.4.50.tar.gz", hash = "sha256:6a070771ddd3896c0faa400212ff755336693525ab2bb7386034a5dd7e1fc2e6", size = 538500 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9e/d3/253e5e9d71f8a6c01626d7ee74cd5a42255364b918c49cef4b84d3a0e76d/realtimetts-0.4.50-py3-none-any.whl", hash = "sha256:c9fb9ea60472877829d6c26f05105a80dbf18be5769623fc0f95e17c418cbe19", size = 538487 },
+
+[package.metadata]
+requires-dist = [
+    { name = "azure-cognitiveservices-speech", marker = "extra == 'all'", specifier = "==1.42.0" },
+    { name = "azure-cognitiveservices-speech", marker = "extra == 'azure'", specifier = "==1.42.0" },
+    { name = "cn2an", marker = "extra == 'zh'", specifier = "==0.5.23" },
+    { name = "coqui-tts", marker = "extra == 'all'", specifier = "==0.25.3" },
+    { name = "coqui-tts", marker = "extra == 'coqui'", specifier = "==0.25.3" },
+    { name = "cutlet", marker = "extra == 'jp'" },
+    { name = "edge-tts", marker = "extra == 'all'", specifier = "==7.0.0" },
+    { name = "edge-tts", marker = "extra == 'edge'", specifier = "==7.0.0" },
+    { name = "elevenlabs", marker = "extra == 'all'", specifier = "==1.53.0" },
+    { name = "elevenlabs", marker = "extra == 'elevenlabs'", specifier = "==1.53.0" },
+    { name = "fugashi", marker = "extra == 'jp'", specifier = "==1.4.0" },
+    { name = "gtts", marker = "extra == 'all'", specifier = "==2.5.4" },
+    { name = "gtts", marker = "extra == 'gtts'", specifier = "==2.5.4" },
+    { name = "hangul-romanize", marker = "extra == 'ko'" },
+    { name = "jaconv", marker = "extra == 'jp'", specifier = "==0.4.0" },
+    { name = "jieba", marker = "extra == 'zh'", specifier = "==0.42.1" },
+    { name = "kokoro", marker = "extra == 'all'", specifier = "==0.8.4" },
+    { name = "kokoro", marker = "extra == 'kokoro'", specifier = "==0.8.4" },
+    { name = "mecab-python3", marker = "extra == 'jp'", specifier = "==1.0.6" },
+    { name = "mojimoji", marker = "extra == 'jp'", specifier = "==0.0.13" },
+    { name = "openai", marker = "extra == 'all'", specifier = "==1.65.5" },
+    { name = "openai", marker = "extra == 'openai'", specifier = "==1.65.5" },
+    { name = "ordered-set", marker = "extra == 'zh'", specifier = "==4.1.0" },
+    { name = "pyaudio", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'all'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'azure'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'coqui'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'edge'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'elevenlabs'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'gtts'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'jp'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'ko'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'kokoro'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'minimal'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'openai'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'system'", specifier = "==0.2.14" },
+    { name = "pyaudio", marker = "extra == 'zh'", specifier = "==0.2.14" },
+    { name = "pydub", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'all'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'azure'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'coqui'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'edge'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'elevenlabs'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'gtts'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'jp'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'ko'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'kokoro'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'minimal'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'openai'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'system'", specifier = "==0.25.1" },
+    { name = "pydub", marker = "extra == 'zh'", specifier = "==0.25.1" },
+    { name = "pypinyin", marker = "extra == 'zh'", specifier = "==0.53.0" },
+    { name = "pyttsx3", marker = "extra == 'all'", specifier = "==2.98" },
+    { name = "pyttsx3", marker = "extra == 'system'", specifier = "==2.98" },
+    { name = "resampy", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'all'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'azure'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'coqui'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'edge'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'elevenlabs'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'gtts'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'jp'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'ko'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'kokoro'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'minimal'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'openai'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'system'", specifier = "==0.4.3" },
+    { name = "resampy", marker = "extra == 'zh'", specifier = "==0.4.3" },
+    { name = "stream2sentence", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'all'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'azure'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'coqui'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'edge'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'elevenlabs'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'gtts'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'jp'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'ko'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'kokoro'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'minimal'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'openai'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'system'", specifier = "==0.3.0" },
+    { name = "stream2sentence", marker = "extra == 'zh'", specifier = "==0.3.0" },
+    { name = "unidic-lite", marker = "extra == 'jp'", specifier = "==1.0.8" },
 ]
+provides-extras = ["minimal", "all", "system", "azure", "elevenlabs", "openai", "gtts", "coqui", "edge", "kokoro", "jp", "zh", "ko"]
 
 [[package]]
 name = "regex"
@@ -4348,6 +4462,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/4b/6e/e9fffb9ee34c81d62f2409e27e9ad85185df65b11db26442a4cef046ff3b/stanza-1.9.2.tar.gz", hash = "sha256:36a93f60bf470e6026122eacab291751ad401fe3279e2d022fffef5cb35903e5", size = 862828 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ca/a4/8e66af3775e87ef2369547c8ce95ae1baf2d2e5fca0ef2c0f38ec91ac001/stanza-1.9.2-py3-none-any.whl", hash = "sha256:d869c4bbd61c52422bd263ee72d6d225e2235b18b0b00b5eff3d86a14b210553", size = 1061519 },
+]
+
+[[package]]
+name = "starlette"
+version = "0.46.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/04/1b/52b27f2e13ceedc79a908e29eac426a63465a1a01248e5f24aa36a62aeb3/starlette-0.46.1.tar.gz", hash = "sha256:3c88d58ee4bd1bb807c0d1acb381838afc7752f9ddaec81bbe4383611d833230", size = 2580102 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/4b/528ccf7a982216885a1ff4908e886b8fb5f19862d1962f56a3fce2435a70/starlette-0.46.1-py3-none-any.whl", hash = "sha256:77c74ed9d2720138b25875133f3a2dae6d854af2ec37dceb56aef370c1d8a227", size = 71995 },
 ]
 
 [[package]]

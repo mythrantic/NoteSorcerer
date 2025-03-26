@@ -1,16 +1,49 @@
-from RealtimeSTT import AudioToTextRecorder
-from RealtimeTTS import TextToAudioStream, SystemEngine
 import os
+import sys
+from RealtimeTTS import SystemEngine
+from RealtimeTTS.engines import SystemEngine as SysEngine
 import keyboard # pip install keyboard
 import time
 import json
 import requests
 import threading
+from RealtimeSTT import AudioToTextRecorder
+from RealtimeTTS import TextToAudioStream
 
-if __name__ == '__main__':
-    print()
+def initialize_tts():
+    try:
+        # First method to create the engine
+        print("Attempting to initialize TTS with SystemEngine...")
+        engines = [SysEngine(print_installed_voices=True)]
+        print("TTS engine initialized successfully!")
+        return engines
+    except Exception as e1:
+        print(f"First initialization method failed: {e1}")
+        try:
+            # Alternative method to initialize
+            print("Trying alternative initialization method...")
+            engine = SystemEngine()
+            engine.print_installed_voices = True
+            print("TTS engine initialized successfully with alternative method!")
+            return [engine]
+        except Exception as e2:
+            print(f"Alternative initialization failed: {e2}")
+            print("Could not initialize TTS engine. Check if RealtimeTTS is properly installed.")
+            return None
+
+def main():
     print("Initializing")
-    print()
+    
+    # Initialize TTS engines
+    engines = initialize_tts()
+    
+    if engines:
+        print("Successfully initialized TTS engines:")
+        for i, engine in enumerate(engines):
+            print(f"Engine {i+1}: {engine.__class__.__name__}")
+    else:
+        print("Failed to initialize TTS engines.")
+        sys.exit(1)
     
     character_personality = """
     You are Sophia, a passionate girl, fully engaged with 
@@ -30,11 +63,10 @@ if __name__ == '__main__':
     """
     
     # LLM model setting
-    llm_model = "llama2"  # Or any other model you have installed with Ollama
+    llm_model = "gemma3"  # Or any other model you have installed with Ollama
     whisper_speech_to_text_model = "medium"
     
     # engine selection  ####################################################################################################
-    engines = [SystemEngine()]  # Using only the free SystemEngine from RealtimeTTS
     recorder = AudioToTextRecorder(model=whisper_speech_to_text_model)
     print("Available tts engines:")
     print()
@@ -50,7 +82,7 @@ if __name__ == '__main__':
     
     # Check if Ollama is running
     try:
-        requests.get("http://localhost:11434/api/tags")
+        requests.get("http://localhost:7869/api/tags")
         print(f"Ollama detected. Using model: {llm_model}")
     except:
         print("Warning: Ollama doesn't seem to be running. Make sure to start it with:")
@@ -141,3 +173,6 @@ if __name__ == '__main__':
             time.sleep(0.1)    
         
         history.append({'role': 'assistant', 'content': stream.text()})
+
+if __name__ == "__main__":
+    main()

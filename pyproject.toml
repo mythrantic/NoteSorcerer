@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "edge-tts>=7.0.0",
+    "fastapi>=0.115.12",
     "keyboard>=0.13.5",
     "logspyq",
     "pygame>=2.6.1",
@@ -15,3 +16,5 @@ dependencies = [
 
 [tool.uv.sources]
 logspyq = { path = "modules/logspyq" }
+realtimestt = { path = "modules/RealtimeSTT" }
+realtimetts = { path = "modules/RealtimeTTS" }

@@ -44,6 +44,7 @@ if __name__ == "__main__":
 
 - Python 3.8+
 - Logseq Desktop App
+- uv (not strictly required, but recommended)
 
 ### Install
 
@@ -85,6 +86,8 @@ python3 -m venv venv
 source venv/bin/activate
 
 pip install -e .  # Install logspyq, remember the dot at the end
+
+uv sync
 ```
 
 > Note: You will need to run `source venv/bin/activate` when in the project directory, every time you open a new terminal.

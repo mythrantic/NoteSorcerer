@@ -88,6 +88,7 @@ source venv/bin/activate
 pip install -e .  # Install logspyq, remember the dot at the end
 
 uv sync
+uv pip install -e .
 ```
 
 > Note: You will need to run `source venv/bin/activate` when in the project directory, every time you open a new terminal.

@@ -7,14 +7,11 @@ requires-python = ">=3.12"
 dependencies = [
     "edge-tts>=7.0.0",
     "fastapi>=0.115.12",
+    "faster-whisper>=1.1.1",
     "keyboard>=0.13.5",
     "logspyq",
     "pygame>=2.6.1",
-    "realtimestt>=0.3.98",
-    "realtimetts>=0.4.50",
 ]
 
 [tool.uv.sources]
 logspyq = { path = "modules/logspyq" }
-realtimestt = { path = "modules/RealtimeSTT" }
-realtimetts = { path = "modules/RealtimeTTS" }

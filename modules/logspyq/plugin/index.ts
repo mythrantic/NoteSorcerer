@@ -8,7 +8,7 @@ const settingsSchema: SettingSchemaDesc[] = [
   {
     key: "serverURL",
     type: "string",
-    default: "http://localhost:3000",
+    default: "http://localhost:12315",
     title: "Python Plugin Server URL",
     description: "Visit the URL in your browser for agent settings.",
   },

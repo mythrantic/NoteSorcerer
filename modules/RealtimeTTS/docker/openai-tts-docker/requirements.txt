@@ -34,7 +34,7 @@ stanza==1.6.1
 starlette==0.38.6
 stream2sentence==0.2.5
 sympy==1.13.3
-torch==2.2.2
+torch==2.6.0
 tqdm==4.66.5
 typing_extensions==4.12.2
 urllib3==2.2.3
